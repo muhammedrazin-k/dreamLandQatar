@@ -1,15 +1,19 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-red: #8B0000;
+  --color-brand-light-red: #B22222;
+  --color-brand-gold: #FFD700;
+  --color-brand-dark: #0a0a0a;
+  
+  --font-geist-sans: var(--font-geist-sans);
+  --font-geist-mono: var(--font-geist-mono);
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  scroll-behavior: smooth;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +26,62 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Custom Utilities */
+.dotted-overlay {
+  background-image: radial-gradient(rgba(0,0,0,0.4) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+.wavy-border {
+  mask-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="%23000" fill-opacity="1" d="M0,64L48,80C96,96,192,128,288,128C384,128,480,96,576,85.3C672,75,768,85,864,117.3C960,149,1056,203,1152,213.3C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,132,320,48,320L0,320Z"></path></svg>');
+  mask-size: cover;
+  mask-repeat: no-repeat;
+}
+
+.bg-premium-white {
+  background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f9fafb 100%);
+}
+
+@keyframes flow-lines {
+  0% { transform: translateY(0) rotate(45deg); opacity: 0; }
+  50% { opacity: 0.1; }
+  100% { transform: translateY(-100px) rotate(45deg); opacity: 0; }
+}
+
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+}
+
+.shadow-premium {
+  box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.1), 0 10px 15px -5px rgba(0, 0, 0, 0.05);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+@keyframes slow-zoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.1); }
+}
+
+.animate-slow-zoom {
+  animation: slow-zoom 20s ease-in-out infinite alternate;
+}
+@keyframes marquee-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee-left 40s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }
