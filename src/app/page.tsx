@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const services = [
   { id: 1, title: "Pick & Drop facility AC Vehicles", icon: "🚗" },
@@ -75,6 +77,12 @@ export default function Home() {
   const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+      easing: "ease-out-cubic",
+    });
+
     const timer = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % carouselItems.length);
     }, 4000);
@@ -269,7 +277,7 @@ export default function Home() {
       {/* Booking Section */}
       <section id="booknow" className="bg-background py-24 px-4 relative overflow-hidden">
         <div className="mx-auto max-w-6xl relative z-10">
-          <div className="text-center mb-16 space-y-4">
+          <div className="text-center mb-16 space-y-4" data-aos="fade-up">
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-foreground capitalize">
               Secure Your <span className="text-brand-red">Adventure</span>
             </h2>
@@ -280,7 +288,10 @@ export default function Home() {
 
           <div className="grid gap-16 lg:grid-cols-2 lg:items-center p-8 lg:p-12 rounded-[2.5rem] bg-card/30 border border-zinc-200/80 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.02)]">
             {/* Multi-step Booking Form */}
-            <div className="rounded-3xl bg-card p-8 lg:p-10 shadow-premium border border-zinc-200/80 dark:border-white/5 transition-all duration-500">
+            <div
+              data-aos="fade-right"
+              className="rounded-3xl bg-card p-8 lg:p-10 shadow-premium border border-zinc-200/80 dark:border-white/5 transition-all duration-500"
+            >
               {/* Progress Bar */}
               <div className="mb-10 flex items-center justify-between px-2 relative">
                 {[1, 2, 3].map((s) => (
@@ -451,7 +462,10 @@ export default function Home() {
             </div>
 
             {/* Service Grid */}
-            <div className="grid grid-cols-2 gap-x-8 gap-y-12">
+            <div
+              data-aos="fade-left"
+              className="grid grid-cols-2 gap-x-8 gap-y-12"
+            >
               {services.map((s) => (
                 <div key={s.id} className="group relative">
                   <div className="flex flex-col items-center lg:items-start space-y-4">
@@ -473,7 +487,7 @@ export default function Home() {
       {/* Desert Experience Section */}
       <section id="explore" className="bg-background py-32 px-4 relative overflow-hidden">
         <div className="mx-auto max-w-7xl text-center relative z-10">
-          <div className="space-y-4 mb-20">
+          <div className="space-y-4 mb-20" data-aos="fade-up">
             <div className="inline-block rounded-full bg-brand-red/10 px-6 py-2 text-[10px] font-black uppercase tracking-[0.4em] text-brand-red">
               Curated Adventures
             </div>
@@ -489,6 +503,8 @@ export default function Home() {
             {experiences.map((exp, i) => (
               <div
                 key={i}
+                data-aos="fade-up"
+                data-aos-delay={i * 100}
                 className="group relative flex flex-col overflow-hidden bg-white dark:bg-card shadow-[0_20px_50px_rgba(0,0,0,0.08)] dark:shadow-none hover:shadow-premium transition-all duration-700 rounded-[2.5rem] border border-zinc-200/60 dark:border-white/5"
               >
                 {/* Image Container */}
@@ -538,7 +554,7 @@ export default function Home() {
       {/* Why Us Section */}
       <section id="whyus" className="bg-background py-32 px-4 relative overflow-hidden">
         <div className="mx-auto max-w-7xl relative z-10 px-4">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-20 gap-8">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-20 gap-8" data-aos="fade-up">
             <div className="space-y-4 max-w-2xl">
               <div className="inline-block rounded-full bg-zinc-100 dark:bg-zinc-800 px-6 py-2 text-[10px] font-black uppercase tracking-[0.4em] text-zinc-400 dark:text-zinc-500">
                 The Benchmark
@@ -563,6 +579,8 @@ export default function Home() {
             ].map((item, i) => (
               <div
                 key={i}
+                data-aos="fade-up"
+                data-aos-delay={i * 100}
                 className="group relative flex flex-col items-center text-center p-8 rounded-[2rem] bg-card hover:bg-foreground/5 transition-all duration-500 border border-border shadow-sm hover:shadow-2xl"
               >
                 <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-card border border-border text-3xl shadow-sm transition-all duration-500 group-hover:bg-brand-red group-hover:rotate-[15deg]">
@@ -589,7 +607,7 @@ export default function Home() {
         <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-background to-transparent" />
 
         <div className="mx-auto max-w-7xl px-4 relative z-10">
-          <div className="text-center mb-24 space-y-4">
+          <div className="text-center mb-24 space-y-4" data-aos="fade-up">
             <div className="inline-block rounded-full bg-brand-red/10 px-6 py-2 text-[10px] font-black uppercase tracking-[0.4em] text-brand-red">
               Vivid Perspectives
             </div>
@@ -601,7 +619,10 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[1000px]">
             {/* Main Feature - Vibrant & Deep Shadow */}
-            <div className="md:col-span-8 md:row-span-2 relative group overflow-hidden rounded-[2rem] md:rounded-[3rem] shadow-premium h-[400px] md:h-auto">
+            <div
+              data-aos="fade-right"
+              className="md:col-span-8 md:row-span-2 relative group overflow-hidden rounded-[2rem] md:rounded-[3rem] shadow-premium h-[400px] md:h-auto"
+            >
               <Image
                 src="/images/sunrise.png"
                 alt="Adventure"
@@ -620,7 +641,10 @@ export default function Home() {
             </div>
 
             {/* Vertical - Stylish B&W to Color Transition */}
-            <div className="md:col-span-4 md:row-span-3 relative group overflow-hidden rounded-[2rem] md:rounded-[3rem] shadow-premium border-4 border-card h-[400px] md:h-auto">
+            <div
+              data-aos="fade-left"
+              className="md:col-span-4 md:row-span-3 relative group overflow-hidden rounded-[2rem] md:rounded-[3rem] shadow-premium border-4 border-card h-[400px] md:h-auto"
+            >
               <Image
                 src="/images/camel-front-view.jpg"
                 alt="Adventure"
@@ -637,7 +661,10 @@ export default function Home() {
             </div>
 
             {/* Square 1 - High Contrast */}
-            <div className="md:col-span-4 md:row-span-2 relative group overflow-hidden rounded-[2rem] md:rounded-[3rem] shadow-premium bg-zinc-900 h-[300px] md:h-auto">
+            <div
+              data-aos="fade-up"
+              className="md:col-span-4 md:row-span-2 relative group overflow-hidden rounded-[2rem] md:rounded-[3rem] shadow-premium bg-zinc-900 h-[300px] md:h-auto"
+            >
               <Image
                 src="/images/skating-1.jpg"
                 alt="Adventure"
@@ -649,7 +676,10 @@ export default function Home() {
             </div>
 
             {/* Square 2 - Accent Box */}
-            <div className="md:col-span-4 md:row-span-2 relative group overflow-hidden rounded-[2rem] md:rounded-[3rem] shadow-premium border-2 border-dashed border-border p-4 h-[300px] md:h-auto">
+            <div
+              data-aos="fade-up"
+              className="md:col-span-4 md:row-span-2 relative group overflow-hidden rounded-[2rem] md:rounded-[3rem] shadow-premium border-2 border-dashed border-border p-4 h-[300px] md:h-auto"
+            >
               <div className="relative h-full w-full overflow-hidden rounded-[2.5rem]">
                 <Image
                   src="/images/desert-dinner.jpg"
@@ -668,7 +698,7 @@ export default function Home() {
       {/* Reviews Section */}
       <section id="reviews" className="bg-background py-32 px-4 relative overflow-hidden">
         <div className="mx-auto max-w-7xl relative z-10 px-4">
-          <div className="text-center mb-20 space-y-4">
+          <div className="text-center mb-20 space-y-4" data-aos="fade-up">
             <div className="inline-block rounded-full bg-zinc-100 dark:bg-zinc-800 px-6 py-2 text-[10px] font-black uppercase tracking-[0.4em] text-zinc-400 dark:text-zinc-500">
               Client Experiences
             </div>
@@ -697,6 +727,8 @@ export default function Home() {
                 ].map((testimonial, index) => (
                   <div
                     key={index}
+                    data-aos="fade-up"
+                    data-aos-delay={(index % 5) * 100}
                     className="w-[450px] shrink-0 p-10 rounded-[2.5rem] bg-white dark:bg-card border border-zinc-200/80 dark:border-white/5 shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-none hover:shadow-premium transition-all duration-700 group"
                   >
                     <div className="flex items-center gap-4 mb-8">
