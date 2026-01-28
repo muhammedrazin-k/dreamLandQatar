@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 const services = [
   { id: 1, title: "Pick & Drop facility AC Vehicles", icon: "🚗" },
@@ -150,7 +151,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-white">
+    <div className="flex flex-col min-h-screen bg-background text-foreground transition-colors duration-300">
       {/* Background Features */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
         <div className="moving-line top-1/4 left-1/4" style={{ animationDelay: '0s' }} />
@@ -161,27 +162,28 @@ export default function Home() {
       {/* Header */}
       <header className="absolute top-0 z-50 flex w-full items-center justify-between px-6 md:px-12 py-6 md:py-8 transition-all duration-300">
         <div className="flex flex-col">
-          <div className="text-xl md:text-3xl font-black tracking-tighter leading-none text-zinc-900">DREAM LAND</div>
+          <div className="text-xl md:text-3xl font-black tracking-tighter leading-none text-foreground">DREAM LAND</div>
           <div className="text-[8px] md:text-[10px] font-black tracking-[0.4em] text-brand-red ml-1 uppercase">Qatar Adventures</div>
         </div>
 
 
         <div className="flex items-center gap-3 md:gap-6">
+          <ThemeToggle />
           <a
             href="tel:+97455579001"
-            className="group flex h-10 w-10 md:h-14 md:w-14 items-center justify-center rounded-full border border-zinc-200 bg-white shadow-sm transition-all hover:border-brand-red hover:scale-110"
+            className="group flex h-10 w-10 md:h-14 md:w-14 items-center justify-center rounded-full border border-border bg-card shadow-sm transition-all hover:border-brand-red hover:scale-110"
             title="Call Us"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" className="md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="#18181b" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" className="md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
             </svg>
           </a>
           <a
             href="https://wa.me/97455579001"
-            className="group flex h-10 w-10 md:h-14 md:w-14 items-center justify-center rounded-full border border-zinc-200 bg-white shadow-sm transition-all hover:border-[#25D366] hover:scale-110"
+            className="group flex h-10 w-10 md:h-14 md:w-14 items-center justify-center rounded-full border border-border bg-card shadow-sm transition-all hover:border-[#25D366] hover:scale-110"
             title="WhatsApp Us"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" className="md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="#18181b" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" className="md:w-5 md:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
             </svg>
           </a>
@@ -194,25 +196,25 @@ export default function Home() {
           <div className="grid gap-20 lg:grid-cols-2 lg:items-center">
             {/* Left Content */}
             <div className="relative z-10 space-y-8 animate-in fade-in slide-in-from-left-8 duration-1000">
-              <div className="inline-block rounded-full border border-brand-red/20 bg-brand-red/5 px-6 py-2 text-[10px] font-black uppercase tracking-[0.4em] text-brand-red">
+              <div className="inline-block rounded-full border border-brand-red/20 bg-brand-red/5 px-6 py-2 text-[10px] font-black uppercase tracking-[0.4em] text-brand-red dark:border-brand-red/40 dark:bg-brand-red/10 dark:text-red-500">
                 Premium Market Leader
               </div>
-              <h1 className="text-4xl md:text-7xl lg:text-[6.5rem] font-black tracking-tighter text-zinc-900 leading-[0.9] md:leading-[0.85]">
+              <h1 className="text-4xl md:text-7xl lg:text-[6.5rem] font-black tracking-tighter text-foreground leading-[0.9] md:leading-[0.85]">
                 {carouselItems[activeSlide].title.split(' ')[0]} <br />
                 <span className="text-brand-red">{carouselItems[activeSlide].title.split(' ').slice(1).join(' ') || ''}</span>
               </h1>
-              <p className="max-w-md text-base md:text-xl font-medium text-zinc-500 leading-relaxed">
+              <p className="max-w-md text-base md:text-xl font-medium opacity-60 leading-relaxed">
                 Experience the Arabian desert with a touch of modern luxury. Bespoke tours tailored for the discerning traveler.
               </p>
               <div className="flex items-center gap-6 pt-6">
                 <a
                   href="#booknow"
-                  className="rounded-full bg-zinc-900 px-8 py-4 md:px-12 md:py-5 text-xs md:text-sm font-black uppercase tracking-widest text-white transition-all hover:bg-brand-red hover:shadow-[0_20px_40px_rgba(139,0,0,0.2)]"
+                  className="rounded-full bg-zinc-900 px-8 py-4 md:px-12 md:py-5 text-xs md:text-sm font-black uppercase tracking-widest text-white transition-all hover:bg-brand-red hover:shadow-[0_20px_40px_rgba(139,0,0,0.2)] border border-zinc-200 dark:border-white/10"
                 >
                   Book Now
                 </a>
-                <div className="h-px w-20 bg-zinc-200" />
-                <button className="text-[10px] font-black uppercase tracking-widest text-zinc-400 hover:text-zinc-900 transition-colors">
+                <div className="h-px w-20 bg-border" />
+                <button className="text-[10px] font-black uppercase tracking-widest opacity-40 hover:opacity-100 transition-opacity">
                   Full Story
                 </button>
               </div>
@@ -222,7 +224,7 @@ export default function Home() {
             <div className="relative flex items-center justify-center animate-in fade-in slide-in-from-right-8 duration-1000">
               <div className="relative h-[550px] w-full max-w-[450px] p-6 lg:p-8">
                 {/* Stylish Image Container */}
-                <div className="relative h-full w-full overflow-hidden bg-white p-4 shadow-[0_50px_100px_rgba(0,0,0,0.08)] transition-all duration-700 ease-in-out">
+                <div className="relative h-full w-full overflow-hidden bg-card p-4 shadow-premium transition-all duration-700 ease-in-out">
                   {carouselItems.map((item, index) => (
                     <div
                       key={index}
@@ -245,8 +247,8 @@ export default function Home() {
                 </div>
 
                 {/* Decorative Frames */}
-                <div className="absolute -top-4 -right-4 h-32 w-32 border-t-2 border-r-2 border-brand-red/10 pointer-events-none" />
-                <div className="absolute -bottom-4 -left-4 h-32 w-32 border-b-2 border-l-2 border-brand-red/10 pointer-events-none" />
+                <div className="absolute -top-4 -right-4 h-32 w-32 border-t-2 border-r-2 border-brand-red/10 dark:border-brand-red/30 pointer-events-none" />
+                <div className="absolute -bottom-4 -left-4 h-32 w-32 border-b-2 border-l-2 border-brand-red/10 dark:border-brand-red/30 pointer-events-none" />
 
                 {/* Carousel Navigation Dots */}
                 <div className="absolute -right-8 top-1/2 flex -translate-y-1/2 flex-col gap-4">
@@ -265,10 +267,10 @@ export default function Home() {
       </section>
 
       {/* Booking Section */}
-      <section id="booknow" className="bg-white py-24 px-4 relative overflow-hidden">
+      <section id="booknow" className="bg-background py-24 px-4 relative overflow-hidden">
         <div className="mx-auto max-w-6xl relative z-10">
           <div className="text-center mb-16 space-y-4">
-            <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-zinc-900 capitalize">
+            <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-foreground capitalize">
               Secure Your <span className="text-brand-red">Adventure</span>
             </h2>
             <p className="text-zinc-500 max-w-xl mx-auto text-sm md:text-base font-medium">
@@ -276,14 +278,14 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid gap-16 lg:grid-cols-2 lg:items-center p-8 lg:p-12 rounded-[2.5rem] bg-zinc-50/50 border border-zinc-100">
+          <div className="grid gap-16 lg:grid-cols-2 lg:items-center p-8 lg:p-12 rounded-[2.5rem] bg-card/30 border border-zinc-200/80 dark:border-white/5 shadow-[0_8px_30px_rgb(0,0,0,0.02)]">
             {/* Multi-step Booking Form */}
-            <div className="rounded-3xl bg-white p-8 lg:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.03)] border border-zinc-100 transition-all duration-500">
+            <div className="rounded-3xl bg-card p-8 lg:p-10 shadow-premium border border-zinc-200/80 dark:border-white/5 transition-all duration-500">
               {/* Progress Bar */}
-              <div className="mb-10 flex items-center justify-between px-2">
+              <div className="mb-10 flex items-center justify-between px-2 relative">
                 {[1, 2, 3].map((s) => (
                   <div key={s} className="flex flex-col items-center gap-2 group">
-                    <div className={`flex h-10 w-10 items-center justify-center rounded-full text-sm font-black transition-all duration-300 ${step >= s ? "bg-brand-red text-white shadow-[0_10px_20px_rgba(139,0,0,0.2)]" : "bg-zinc-100 text-zinc-400"}`}>
+                    <div className={`flex h-10 w-10 items-center justify-center rounded-full text-sm font-black transition-all duration-300 ${step >= s ? "bg-brand-red text-white shadow-[0_10px_20px_rgba(139,0,0,0.2)]" : "bg-background border border-border text-foreground/40"}`}>
                       {s}
                     </div>
                     <span className={`text-[10px] font-black uppercase tracking-widest ${step >= s ? "text-brand-red" : "text-zinc-300"}`}>
@@ -291,7 +293,7 @@ export default function Home() {
                     </span>
                   </div>
                 ))}
-                <div className="absolute top-[4.5rem] left-[15%] right-[15%] h-[2px] bg-zinc-100 -z-10 hidden md:block" />
+                <div className="absolute top-5 left-[15%] right-[15%] h-[2px] bg-border -z-10 hidden md:block" />
               </div>
 
               {/* Form Content */}
@@ -299,7 +301,7 @@ export default function Home() {
                 {isSuccess ? (
                   <div className="animate-in fade-in zoom-in-95 duration-500 flex flex-col items-center justify-center space-y-4 py-12 text-center">
                     <div className="h-20 w-20 rounded-full bg-green-100 flex items-center justify-center text-4xl">✅</div>
-                    <h3 className="text-2xl font-black text-zinc-900">Booking Confirmed!</h3>
+                    <h3 className="text-2xl font-black text-foreground">Booking Confirmed!</h3>
                     <p className="text-zinc-500 font-medium">Your request has been sent. We will contact you shortly.</p>
                     <button
                       onClick={() => setIsSuccess(false)}
@@ -322,7 +324,7 @@ export default function Home() {
                                 setFormData({ ...formData, service: e.target.value });
                                 if (errors.service) setErrors({ ...errors, service: "" });
                               }}
-                              className={`w-full rounded-xl bg-white border-2 p-4 outline-none transition-all appearance-none cursor-pointer font-bold text-zinc-900 ${errors.service ? "border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.1)]" : "border-zinc-100 hover:border-zinc-300 focus:border-zinc-900 focus:shadow-[0_10px_30px_rgba(0,0,0,0.05)]"}`}
+                              className={`w-full rounded-xl bg-background border-2 p-4 outline-none transition-all appearance-none cursor-pointer font-bold text-foreground ${errors.service ? "border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.1)]" : "border-border hover:border-brand-red/20 focus:border-brand-red"}`}
                             >
                               <option value="">Choose an adventure...</option>
                               {serviceOptions.map(opt => <option key={opt} value={opt}>{opt}</option>)}
@@ -345,7 +347,7 @@ export default function Home() {
                             name="date"
                             value={formData.date}
                             onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                            className={`w-full rounded-xl bg-white border-2 p-4 outline-none transition-all font-bold text-zinc-900 ${errors.date ? "border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.1)]" : "border-zinc-100 hover:border-zinc-300 focus:border-zinc-900 focus:shadow-[0_10px_30px_rgba(0,0,0,0.05)]"}`}
+                            className={`w-full rounded-xl bg-background border-2 p-4 outline-none transition-all font-bold text-foreground ${errors.date ? "border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.1)]" : "border-border hover:border-brand-red/20 focus:border-brand-red"}`}
                           />
                           {errors.date && <p className="mt-2 text-xs font-bold text-red-600 px-2 italic">⚠️ {errors.date}</p>}
                         </div>
@@ -356,7 +358,7 @@ export default function Home() {
                               name="time"
                               value={formData.time}
                               onChange={(e) => setFormData({ ...formData, time: e.target.value })}
-                              className={`w-full rounded-xl bg-white border-2 p-4 outline-none transition-all appearance-none cursor-pointer font-bold调节 text-zinc-900 ${errors.time ? "border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.1)]" : "border-zinc-100 hover:border-zinc-300 focus:border-zinc-900 focus:shadow-[0_10px_30px_rgba(0,0,0,0.05)]"}`}
+                              className={`w-full rounded-xl bg-background border-2 p-4 outline-none transition-all appearance-none cursor-pointer font-bold text-foreground ${errors.time ? "border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.1)]" : "border-border hover:border-brand-red"}`}
                             >
                               <option value="">Select Time</option>
                               <option>Morning (08:00 AM)</option>
@@ -383,7 +385,7 @@ export default function Home() {
                             placeholder="Full Name"
                             value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                            className={`w-full rounded-xl bg-white border-2 p-4 outline-none transition-all font-bold text-zinc-900 ${errors.name ? "border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.1)]" : "border-zinc-100 hover:border-zinc-300 focus:border-zinc-900 focus:shadow-[0_10px_30px_rgba(0,0,0,0.05)]"}`}
+                            className={`w-full rounded-xl bg-background border-2 p-4 outline-none transition-all font-bold text-foreground ${errors.name ? "border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.1)]" : "border-border hover:border-brand-red/20 focus:border-brand-red"}`}
                           />
                           {errors.name && <p className="mt-2 text-xs font-bold text-red-600 px-2 italic">⚠️ {errors.name}</p>}
                         </div>
@@ -395,7 +397,7 @@ export default function Home() {
                               placeholder="Email Address"
                               value={formData.email}
                               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                              className={`w-full rounded-xl bg-white border-2 p-4 outline-none transition-all font-bold text-zinc-900 ${errors.email ? "border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.1)]" : "border-zinc-100 hover:border-zinc-300 focus:border-zinc-900 focus:shadow-[0_10px_30px_rgba(0,0,0,0.05)]"}`}
+                              className={`w-full rounded-xl bg-background border-2 p-4 outline-none transition-all font-bold text-foreground ${errors.email ? "border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.1)]" : "border-border hover:border-brand-red"}`}
                             />
                             {errors.email && <p className="mt-2 text-xs font-bold text-red-600 px-2 italic">⚠️ {errors.email}</p>}
                           </div>
@@ -406,7 +408,7 @@ export default function Home() {
                               placeholder="Phone Number"
                               value={formData.phone}
                               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                              className={`w-full rounded-xl bg-white border-2 p-4 outline-none transition-all font-bold text-zinc-900 ${errors.phone ? "border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.1)]" : "border-zinc-100 hover:border-zinc-300 focus:border-zinc-900 focus:shadow-[0_10px_30px_rgba(0,0,0,0.05)]"}`}
+                              className={`w-full rounded-xl bg-background border-2 p-4 outline-none transition-all font-bold text-foreground ${errors.phone ? "border-red-500 shadow-[0_0_15px_rgba(239,68,68,0.1)]" : "border-border hover:border-brand-red"}`}
                             />
                             {errors.phone && <p className="mt-2 text-xs font-bold text-red-600 px-2 italic">⚠️ {errors.phone}</p>}
                           </div>
@@ -420,7 +422,7 @@ export default function Home() {
                           type="button"
                           onClick={prevStep}
                           disabled={isSubmitting}
-                          className="flex-1 rounded-xl border-2 border-zinc-100 py-4 font-black uppercase tracking-widest text-zinc-400 transition-all hover:bg-zinc-50 hover:text-zinc-600 active:scale-95 disabled:opacity-50"
+                          className="flex-1 rounded-xl border-2 border-border py-4 font-black uppercase tracking-widest opacity-40 hover:opacity-100 transition-opacity active:scale-95 disabled:opacity-50"
                         >
                           Back
                         </button>
@@ -429,7 +431,7 @@ export default function Home() {
                         <button
                           type="button"
                           onClick={nextStep}
-                          className="flex-[2] rounded-xl bg-zinc-900 py-4 font-black uppercase tracking-widest text-white shadow-xl transition-all hover:scale-[1.02] hover:bg-brand-red hover:shadow-[0_15px_30px_rgba(139,0,0,0.2)] active:scale-95"
+                          className="flex-[2] rounded-xl bg-zinc-900 py-4 font-black uppercase tracking-widest text-white shadow-xl transition-all hover:scale-[1.02] hover:bg-brand-red hover:shadow-[0_15px_30px_rgba(139,0,0,0.2)] active:scale-95 border border-zinc-200 dark:border-white/10"
                         >
                           Next
                         </button>
@@ -437,7 +439,7 @@ export default function Home() {
                         <button
                           type="submit"
                           disabled={isSubmitting}
-                          className="flex-[2] rounded-xl bg-brand-red py-4 font-black uppercase tracking-widest text-white shadow-xl transition-all hover:scale-[1.02] hover:bg-brand-light-red hover:shadow-[0_15_30px_rgba(139,0,0,0.3)] active:scale-95 disabled:bg-zinc-400"
+                          className="flex-[2] rounded-xl bg-brand-red py-4 font-black uppercase tracking-widest text-white shadow-xl transition-all hover:scale-[1.02] hover:bg-brand-light-red hover:shadow-[0_15_30px_rgba(139,0,0,0.3)] active:scale-95 disabled:bg-zinc-400 border border-transparent dark:border-white/10"
                         >
                           {isSubmitting ? "Sending..." : "Confirm Booking"}
                         </button>
@@ -453,11 +455,11 @@ export default function Home() {
               {services.map((s) => (
                 <div key={s.id} className="group relative">
                   <div className="flex flex-col items-center lg:items-start space-y-4">
-                    <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white border border-zinc-100 shadow-sm transition-all duration-500 group-hover:bg-brand-red group-hover:scale-110 group-hover:shadow-[0_15px_30px_rgba(139,0,0,0.15)]">
+                    <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-card border border-border shadow-sm transition-all duration-500 group-hover:bg-brand-red group-hover:scale-110 group-hover:shadow-[0_15px_30px_rgba(139,0,0,0.15)]">
                       <span className="text-2xl grayscale-0 group-hover:brightness-0 group-hover:invert transition-all">{s.icon}</span>
                     </div>
                     <div className="space-y-1 text-center lg:text-left">
-                      <h3 className="text-xs font-black uppercase tracking-widest text-zinc-900">{s.title.split(' facility')[0]}</h3>
+                      <h3 className="text-xs font-black uppercase tracking-widest text-foreground">{s.title.split(' facility')[0]}</h3>
                       <p className="text-[10px] text-zinc-400 font-bold uppercase tracking-tight">Included Feature</p>
                     </div>
                   </div>
@@ -469,13 +471,13 @@ export default function Home() {
       </section>
 
       {/* Desert Experience Section */}
-      <section id="explore" className="bg-white py-32 px-4 relative overflow-hidden">
+      <section id="explore" className="bg-background py-32 px-4 relative overflow-hidden">
         <div className="mx-auto max-w-7xl text-center relative z-10">
           <div className="space-y-4 mb-20">
             <div className="inline-block rounded-full bg-brand-red/10 px-6 py-2 text-[10px] font-black uppercase tracking-[0.4em] text-brand-red">
               Curated Adventures
             </div>
-            <h2 className="text-4xl md:text-7xl font-black tracking-tighter text-zinc-900 leading-none">
+            <h2 className="text-4xl md:text-7xl font-black tracking-tighter text-foreground leading-none">
               PUSH YOUR <span className="text-brand-red">LIMITS</span>
             </h2>
             <p className="mx-auto max-w-2xl text-base md:text-lg text-zinc-500 font-medium">
@@ -487,7 +489,7 @@ export default function Home() {
             {experiences.map((exp, i) => (
               <div
                 key={i}
-                className="group relative flex flex-col overflow-hidden bg-white hover:shadow-[0_40px_80px_rgba(0,0,0,0.1)] transition-all duration-700 rounded-[2.5rem] border border-zinc-100"
+                className="group relative flex flex-col overflow-hidden bg-white dark:bg-card shadow-[0_20px_50px_rgba(0,0,0,0.08)] dark:shadow-none hover:shadow-premium transition-all duration-700 rounded-[2.5rem] border border-zinc-200/60 dark:border-white/5"
               >
                 {/* Image Container */}
                 <div className="relative h-80 w-full overflow-hidden">
@@ -501,15 +503,15 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
 
                   {/* Price Tag */}
-                  <div className="absolute top-6 left-6 rounded-full bg-white/95 backdrop-blur-md px-4 py-2 shadow-sm">
-                    <span className="text-[10px] font-black text-zinc-900 uppercase tracking-widest">{exp.price}</span>
+                  <div className="absolute top-6 left-6 rounded-full bg-card/95 backdrop-blur-md px-4 py-2 shadow-sm">
+                    <span className="text-[10px] font-black text-foreground uppercase tracking-widest">{exp.price}</span>
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="flex flex-col flex-1 p-8 text-left space-y-4 justify-between bg-white relative z-10">
+                <div className="flex flex-col flex-1 p-8 text-left space-y-4 justify-between bg-card relative z-10">
                   <div className="space-y-4">
-                    <h3 className="text-xl font-black leading-tight text-zinc-900 group-hover:text-brand-red transition-colors duration-300">
+                    <h3 className="text-xl font-black leading-tight text-foreground group-hover:text-brand-red transition-colors duration-300">
                       {exp.title}
                     </h3>
                     <p className="text-sm font-medium text-zinc-400 leading-relaxed text-balance">
@@ -519,11 +521,11 @@ export default function Home() {
 
                   <button
                     onClick={() => document.getElementById('booknow')?.scrollIntoView({ behavior: 'smooth' })}
-                    className="group/btn relative flex items-center justify-between w-full rounded-2xl bg-zinc-50 p-4 font-black uppercase tracking-widest text-zinc-400 transition-all hover:bg-zinc-900 hover:text-white"
+                    className="group/btn relative flex items-center justify-between w-full rounded-2xl bg-card border-1 border-border p-4 font-black uppercase tracking-widest text-foreground/40 transition-all hover:bg-brand-red hover:text-white hover:border-brand-red"
                   >
                     <span>Book Spot</span>
-                    <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-zinc-200 group-hover/btn:bg-brand-red group-hover/btn:text-white transition-all">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14m-7-7 7 7-7 7" /></svg>
+                    <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-zinc-100 dark:bg-white/10 group-hover/btn:bg-white transition-all">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-400 dark:text-zinc-300 group-hover/btn:text-brand-red"><path d="M5 12h14m-7-7 7 7-7 7" /></svg>
                     </div>
                   </button>
                 </div>
@@ -534,14 +536,14 @@ export default function Home() {
       </section>
 
       {/* Why Us Section */}
-      <section id="whyus" className="bg-white py-32 px-4 relative overflow-hidden">
+      <section id="whyus" className="bg-background py-32 px-4 relative overflow-hidden">
         <div className="mx-auto max-w-7xl relative z-10 px-4">
           <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-20 gap-8">
             <div className="space-y-4 max-w-2xl">
-              <div className="inline-block rounded-full bg-zinc-100 px-6 py-2 text-[10px] font-black uppercase tracking-[0.4em] text-zinc-400">
+              <div className="inline-block rounded-full bg-zinc-100 dark:bg-zinc-800 px-6 py-2 text-[10px] font-black uppercase tracking-[0.4em] text-zinc-400 dark:text-zinc-500">
                 The Benchmark
               </div>
-              <h2 className="text-3xl md:text-6xl font-black tracking-tighter text-zinc-900 leading-none">
+              <h2 className="text-3xl md:text-6xl font-black tracking-tighter text-foreground leading-none">
                 THE DREAM LAND <br />
                 <span className="text-brand-red">DIFFERENCE</span>
               </h2>
@@ -561,13 +563,13 @@ export default function Home() {
             ].map((item, i) => (
               <div
                 key={i}
-                className="group relative flex flex-col items-center text-center p-8 rounded-[2rem] bg-zinc-50 hover:bg-zinc-900 transition-all duration-500 border border-zinc-100 shadow-sm hover:shadow-2xl"
+                className="group relative flex flex-col items-center text-center p-8 rounded-[2rem] bg-card hover:bg-foreground/5 transition-all duration-500 border border-border shadow-sm hover:shadow-2xl"
               >
-                <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-white text-3xl shadow-sm transition-all duration-500 group-hover:bg-brand-red group-hover:rotate-[15deg]">
+                <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-card border border-border text-3xl shadow-sm transition-all duration-500 group-hover:bg-brand-red group-hover:rotate-[15deg]">
                   <span className="group-hover:brightness-0 group-hover:invert transition-all">{item.icon}</span>
                 </div>
                 <div className="space-y-2">
-                  <div className="text-2xl font-black text-zinc-900 group-hover:text-white uppercase transition-colors">{item.val}</div>
+                  <div className="text-2xl font-black text-foreground uppercase transition-colors">{item.val}</div>
                   <div className="text-[10px] font-black text-brand-red uppercase tracking-[0.2em]">{item.label}</div>
                   <p className="text-[11px] text-zinc-400 group-hover:text-zinc-500 font-medium transition-colors pt-2">{item.desc}</p>
                 </div>
@@ -581,17 +583,17 @@ export default function Home() {
       </section>
 
       {/* Adventure Gallery Section */}
-      <section id="gallery" className="bg-zinc-50 py-32 px-4 relative overflow-hidden">
+      <section id="gallery" className="bg-background py-32 px-4 relative overflow-hidden">
         {/* Depth Patterns */}
         <div className="absolute inset-0 bg-noise opacity-[0.03] pointer-events-none" />
-        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white to-transparent" />
+        <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-background to-transparent" />
 
         <div className="mx-auto max-w-7xl px-4 relative z-10">
           <div className="text-center mb-24 space-y-4">
             <div className="inline-block rounded-full bg-brand-red/10 px-6 py-2 text-[10px] font-black uppercase tracking-[0.4em] text-brand-red">
               Vivid Perspectives
             </div>
-            <h2 className="text-4xl md:text-8xl font-black tracking-tighter text-zinc-900 leading-[0.8] mb-4">
+            <h2 className="text-4xl md:text-8xl font-black tracking-tighter text-foreground leading-[0.8] mb-4">
               DESERT <br />
               <span className="text-brand-red">CHRONICLES</span>
             </h2>
@@ -607,7 +609,7 @@ export default function Home() {
                 sizes="(max-width: 768px) 100vw, 66vw"
                 className="object-cover transition-all duration-[3s] ease-out group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-900/20 to-transparent opacity-60 group-hover:opacity-80 transition-all duration-700" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-all duration-700" />
               <div className="absolute bottom-12 left-12 text-white">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="h-px w-12 bg-brand-red" />
@@ -618,7 +620,7 @@ export default function Home() {
             </div>
 
             {/* Vertical - Stylish B&W to Color Transition */}
-            <div className="md:col-span-4 md:row-span-3 relative group overflow-hidden rounded-[2rem] md:rounded-[3rem] shadow-premium border-4 border-white h-[400px] md:h-auto">
+            <div className="md:col-span-4 md:row-span-3 relative group overflow-hidden rounded-[2rem] md:rounded-[3rem] shadow-premium border-4 border-card h-[400px] md:h-auto">
               <Image
                 src="/images/camel-front-view.jpg"
                 alt="Adventure"
@@ -647,7 +649,7 @@ export default function Home() {
             </div>
 
             {/* Square 2 - Accent Box */}
-            <div className="md:col-span-4 md:row-span-2 relative group overflow-hidden rounded-[2rem] md:rounded-[3rem] shadow-premium border-2 border-dashed border-zinc-200 p-4 h-[300px] md:h-auto">
+            <div className="md:col-span-4 md:row-span-2 relative group overflow-hidden rounded-[2rem] md:rounded-[3rem] shadow-premium border-2 border-dashed border-border p-4 h-[300px] md:h-auto">
               <div className="relative h-full w-full overflow-hidden rounded-[2.5rem]">
                 <Image
                   src="/images/desert-dinner.jpg"
@@ -664,13 +666,13 @@ export default function Home() {
       </section>
 
       {/* Reviews Section */}
-      <section id="reviews" className="bg-white py-32 px-4 relative overflow-hidden">
+      <section id="reviews" className="bg-background py-32 px-4 relative overflow-hidden">
         <div className="mx-auto max-w-7xl relative z-10 px-4">
           <div className="text-center mb-20 space-y-4">
-            <div className="inline-block rounded-full bg-zinc-100 px-6 py-2 text-[10px] font-black uppercase tracking-[0.4em] text-zinc-400">
+            <div className="inline-block rounded-full bg-zinc-100 dark:bg-zinc-800 px-6 py-2 text-[10px] font-black uppercase tracking-[0.4em] text-zinc-400 dark:text-zinc-500">
               Client Experiences
             </div>
-            <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-zinc-900 leading-none">
+            <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-foreground leading-none">
               VOICES OF THE <span className="text-brand-red">DESERT</span>
             </h2>
           </div>
@@ -679,8 +681,8 @@ export default function Home() {
         {/* Carousel Container */}
         <div className="relative w-full overflow-hidden py-10">
           {/* Blurred Edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 md:w-64 bg-gradient-to-r from-white to-transparent z-20 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 md:w-64 bg-gradient-to-l from-white to-transparent z-20 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-32 md:w-64 bg-gradient-to-r from-background via-background/50 to-transparent z-20 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-32 md:w-64 bg-gradient-to-l from-background via-background/50 to-transparent z-20 pointer-events-none" />
 
           {/* Infinite Marquee */}
           <div className="flex w-max animate-marquee space-x-12 px-6">
@@ -695,14 +697,14 @@ export default function Home() {
                 ].map((testimonial, index) => (
                   <div
                     key={index}
-                    className="w-[450px] shrink-0 p-10 rounded-[2.5rem] bg-zinc-50 border border-zinc-100 hover:border-brand-red hover:bg-white hover:shadow-[0_40px_80px_rgba(0,0,0,0.05)] transition-all duration-700 group"
+                    className="w-[450px] shrink-0 p-10 rounded-[2.5rem] bg-white dark:bg-card border border-zinc-200/80 dark:border-white/5 shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:shadow-none hover:shadow-premium transition-all duration-700 group"
                   >
                     <div className="flex items-center gap-4 mb-8">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-zinc-900 text-white font-black text-xs group-hover:bg-brand-red transition-all duration-500">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-foreground text-background font-black text-xs group-hover:bg-brand-red transition-all duration-500">
                         {testimonial.name.slice(0, 1)}
                       </div>
                       <div>
-                        <div className="text-sm font-black text-zinc-900 uppercase tracking-tighter">{testimonial.name}</div>
+                        <div className="text-sm font-black text-foreground uppercase tracking-tighter">{testimonial.name}</div>
                         <div className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">{testimonial.date}</div>
                       </div>
                       <div className="ml-auto flex gap-1">
@@ -713,7 +715,7 @@ export default function Home() {
                         ))}
                       </div>
                     </div>
-                    <p className="text-lg font-medium text-zinc-500 leading-relaxed italic group-hover:text-zinc-900 transition-colors duration-500 line-clamp-3">
+                    <p className="text-lg font-medium text-zinc-500 dark:text-zinc-400 leading-relaxed italic group-hover:text-zinc-900 dark:group-hover:text-white transition-colors duration-500 line-clamp-3">
                       "{testimonial.comment}"
                     </p>
                   </div>

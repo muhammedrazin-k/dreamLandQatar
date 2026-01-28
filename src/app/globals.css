@@ -8,25 +8,35 @@
   
   --font-geist-sans: var(--font-geist-sans);
   --font-geist-mono: var(--font-geist-mono);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card-bg);
+  --color-border: var(--card-border);
 }
+
+@variant dark (&:is(.dark, .dark *));
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --card-bg: #ffffff;
+  --card-border: #f3f4f6;
   scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.dark {
+  --background: #050505;
+  --foreground: #fafafa;
+  --card-bg: #0c0c0c;
+  --card-border: #1a1a1a;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Custom Utilities */
@@ -45,10 +55,27 @@ body {
   background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f9fafb 100%);
 }
 
+.dark .bg-premium-white {
+  background: radial-gradient(circle at 50% 50%, #0c0c0c 0%, #050505 100%);
+}
+
 @keyframes flow-lines {
   0% { transform: translateY(0) rotate(45deg); opacity: 0; }
-  50% { opacity: 0.1; }
+  50% { opacity: 0.3; }
   100% { transform: translateY(-100px) rotate(45deg); opacity: 0; }
+}
+
+.moving-line {
+  position: absolute;
+  width: 2px;
+  height: 100px;
+  background: linear-gradient(to bottom, transparent, var(--color-brand-red), transparent);
+  animation: flow-lines 8s linear infinite;
+  opacity: 0;
+}
+
+.dark .moving-line {
+  background: linear-gradient(to bottom, transparent, #ff4d4d, transparent);
 }
 
 .bg-noise {
@@ -60,10 +87,19 @@ body {
   box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.1), 0 10px 15px -5px rgba(0, 0, 0, 0.05);
 }
 
+.dark .shadow-premium {
+  box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.5), 0 10px 15px -5px rgba(0, 0, 0, 0.3);
+}
+
 .glass-card {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgb(255, 255, 255);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dark .glass-card {
+  background: rgba(24, 24, 27, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 @keyframes slow-zoom {
   0% { transform: scale(1); }
